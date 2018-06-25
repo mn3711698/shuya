@@ -1,0 +1,124 @@
+<import src="../../utils/wxParse/wxParse.wxml" />
+<view class="container"> 
+  <view class="HotName">{{goodsDetail.basicInfo.name}}<text></text></view>
+  <view class="HotMark">{{goodsDetail.basicInfo.characteristic}}</view>
+  <view class="swiper-container">
+    <swiper class="swiper_box" 
+                    autoplay="{{autoplay}}" circular="{{circular}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{windowWidth/6}}rpx" next-margin="{{windowWidth/8}}rpx">
+      <block wx:for="{{goodsDetail.pics}}" wx:key="id">
+        <swiper-item class="goods-swiper-item">
+          <image src="{{item}}" class="slide-image" mode="widthFix" lazy-load="true"/>
+        </swiper-item>
+      </block>
+    </swiper> 
+  </view>
+  <view class="goods-container">
+    <view class="goods-container-info">
+      <view class="goods-container-money">
+        <text>Ұ</text>{{goodsDetail.basicInfo.minPrice}}
+      </view>
+      <view class="goods-container-score">
+        <text>已售</text>{{goodsDetail.basicInfo.numberOrders}}
+      </view>
+    </view>
+    <view class="goods-container-incon">
+      <view class="goods-container-icon-list" bindtap="{{favicon == 0 ? 'fav':'del'}}">
+        <image wx:if="{{favicon == 0}}" src="../../image/Hot-love.png"></image>
+        <image wx:if="{{favicon == 1}}" src="../../image/Hot-love-o.png"></image>
+        <text wx:if="{{favicon == 0}}">收藏</text>
+        <text wx:if="{{favicon == 1}}">已收藏</text>
+      </view>
+      <view class="goods-container-icon-list">
+        <contact-button type="default-dark"  session-from="weapp" size="27"></contact-button>
+        <image src="../../image/goods-chat.png" />
+        <text>客服</text>
+      </view>
+      <view class="goods-container-icon-list">
+        <button open-type="share">分享</button>
+        <image src="../../image/goods-share.png" />
+        <text>分享</text>
+      </view>
+    </view>
+    <view class="goods-container-article">
+      <view class="swiper-article-tab">  
+        <view class="swiper-article-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">详情</view>  
+        <view class="swiper-article-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">评价
+          <text wx:if="{{reputation.length}}">({{reputation.length}})</text>
+        </view>  
+      </view>
+      <swiper current="{{currentTab}}" class="swiper-article-box" duration="300" style="height:{{windowHeight - 46}}px" bindchange="bindChange">    
+        <swiper-item class="{{navigationbar}}">  
+          <view class="goods-article-text">
+            <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+         </view>
+        </swiper-item>   
+        <swiper-item class="{{navigationbar}}">  
+          <view wx:if="{{!reputation}}" class="no-goods-reput">暂无评价!</view>
+          <view class="goods-reputa-list" wx:for="{{reputation}}" wx:key="id">
+          <view class="goods-reputa-avatar">
+            <image class="goods-avatar" src="{{item.user.avatarUrl}}"></image>
+          </view>
+          <view class="goods-reputa-mark">
+            <view class="goods-reputa-user">
+              {{item.user.nick}}<text>{{item.goods.goodReputationStr}}</text>
+            </view>
+            <view class="goods-mark">{{item.goods.goodReputationRemark}}</view>
+            <view class="goods-mark-day">
+              {{item.goods.dateReputation}}<text>{{item.goods.property}}</text>
+            </view>
+          </view>
+        </view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+  <view class="goods-footer">
+    <view class="goods-footer-add" bindtap="toAddShopCar">加入购物车</view>
+    <view class="goods-footer-buy" bindtap="tobuy">立即购买</view>
+  </view>
+
+  <view class="show-popup" hidden="{{hideShopPopup}}" >
+        <view class="popup-mask" bindtap="closePopupTap"></view>
+        <view class="popup-contents">
+             <view class="pop-goods-info">
+                <view class="pop-img-box">
+                    <image src="{{goodsDetail.basicInfo.pic}}" class="goods-thumbnail"/>
+                </view>
+                <view class="pop-goods-des">
+                    <view class="pop-goods-title">{{goodsDetail.basicInfo.name}}</view>
+                    <view class="pop-goods-price">¥ {{selectSizePrice}}</view>
+                </view>
+                <view class="pop-goods-close" bindtap="closePopupTap">
+                  <image src="../../image/about-icon.png" />
+                </view>
+             </view>
+             <view class="size-label-box">
+                <block wx:for="{{goodsDetail.properties}}" wx:for-item="property" wx:for-index="idx" wx:key="id">
+                <view class="label">{{property.name}}</view> 
+                <view class="label-item-box">
+                    <view class="label-item {{item.active ? 'active' : '' }}" wx:for="{{property.childsCurGoods}}" wx:key="id" bindtap="labelItemTap" data-propertyindex="{{idx}}" data-propertyid="{{property.id}}" data-propertyname="{{property.name}}" data-propertychildindex="{{index}}" data-propertychildid="{{item.id}}" data-propertychildname="{{item.name}}">
+                        {{item.name}}
+                    </view> 
+                </view>
+                </block>
+             </view> 
+             <view class="buy-num-box">
+                <view class="num-label">购买数量</view>
+                <view class="num-box">
+                    <view class="num-jian {{buyNumber == buyNumMin ? 'hui': ''}}" bindtap="numJianTap">-</view>
+                    <view class="num-input">
+                       <input  type="number" value="{{buyNumber}}" disabled/>
+                    </view>
+                    <view class="num-jia {{buyNumber== buyNumMax ? 'hui': ''}}" bindtap="numJiaTap">+</view>
+                </view>
+             </view>  
+             <view class="popup-join-btn" wx:if="{{shopType =='addShopCar'}}" bindtap="addShopCar">
+                加入购物车
+             </view>
+             <view class="popup-join-btn" wx:if="{{shopType =='tobuy'}}" bindtap="buyNow">
+                立即购买
+             </view>                      
+        </view>
+    </view>
+
+</view>

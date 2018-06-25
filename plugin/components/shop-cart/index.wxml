@@ -1,0 +1,44 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="HotName">购物车
+    <text></text>
+  </view>
+  <block wx:if="{{goodsList.list.length > 0}}">
+    <view class="HotMark">向左滑动可删除</view>
+    <view class="goodsList">
+      <view class="a-gooods" wx:for="{{list}}" wx:key="{{index}}">
+        <view class="a-goods-conts" bindtap="selectTap" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.left}}">
+          <view class="goods-info">
+            <view class="img-box">
+              <image src="{{item.pic}}" class="img" />
+              <image wx:if="{{item.active}}" class="active" src="../../image/confirm.png" />
+            </view>
+            <view class="text-box">
+              <view class="goods-title">{{item.name}}</view>
+              <view class="goods-label">{{item.label}}</view>
+              <view class="goods-price">¥{{item.price}}</view>
+              <view class="buy-num">
+                <view class="jian-btn {{item.number==1? 'disabled' : ''}}" catchtap="jianBtnTap" data-index="{{index}}">-</view>
+                <input type="number" value="{{item.number}}" disabled/>
+                <view class="jia-btn {{item.number==10? 'disabled' : ''}}" catchtap="jiaBtnTap" data-index="{{index}}">+</view>
+              </view>
+            </view>
+          </view>
+          <view class="delete-btn" data-index="{{index}}" catchtap="delItem">
+            删除
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="jiesuan-box">
+      <view class="total" wx:if="{{!noSelect}}">合计：¥{{totalPrice}}</view>
+      <view class="total" wx:if="{{noSelect}}">合计：¥{{totalPrice}}</view>
+      <view class="to-pay-btn {{noSelect?'no-select':''}}" bindtap="toPayOrder">去结算</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="title-box">
+      <text>没有添加商品</text>
+    </view>
+  </block>
+</view>

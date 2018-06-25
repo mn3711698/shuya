@@ -1,0 +1,247 @@
+/**index.wxss**/
+
+.HotName {
+  font-size: 90rpx;
+  margin-left: 20px;
+  color: #293539;
+  font-weight: 300;
+  position: relative;
+}
+
+.HotName text {
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  border: 2px solid #a78845;
+  border-radius: 50%;
+}
+
+.HotMark {
+  margin-left: 25px;
+  color: #c5c9ca;
+  font-size: 34rpx;
+  margin-top: 5px;
+  font-weight: 300;
+}
+
+.container {
+  justify-content: initial;
+}
+
+.title-box {
+  width: 100%;
+  padding-top: 280rpx;
+  text-align: center;
+  font-size: 42rpx;
+  color: #c5c9ca;
+  margin-bottom: 50rpx;
+  font-weight: 300;
+}
+
+.list-top {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  align-items: center;
+}
+
+.list-top .label {
+  color: #000;
+}
+
+.list-top .edit-btn {
+  color: #999;
+  height: 100%;
+}
+
+.goodsList {
+  width: 100%;
+  background-color: #fff;
+}
+
+.a-gooods {
+  width: 100%;
+  overflow: hidden;
+}
+
+.a-goods-conts {
+  display: flex;
+  justify-content: space-between;
+  width: 870rpx;
+  box-sizing: border-box;
+  transition: margin-left 0.2s ease-in-out;
+}
+
+.goods-info {
+  display: flex;
+  justify-content: space-between;
+  width: 750rpx;
+  box-sizing: border-box;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+}
+
+.goods-info .img-box {
+  width: 85px;
+  height: 85px;
+  overflow: hidden;
+  margin-right: 20rpx;
+  background-color: #f5f5f5;
+  border-radius: 6rpx;
+  position: relative;
+}
+
+.goods-info .text-box {
+  width: 500rpx;
+  position: relative;
+  font-weight: 300;
+}
+
+.goods-info .text-box .goods-title {
+  font-size: 40rpx;
+  color: #293529;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.goods-info .text-box .goods-label {
+  font-size: 26rpx;
+  color: #979d9f;
+  height: 38rpx;
+  line-height: 38rpx;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.goods-info .text-box .goods-price {
+  font-size: 36rpx;
+  color: #a78845;
+  margin-left: 3px;
+}
+
+.goods-info .text-box .buy-num {
+  width: 190rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.goods-info .text-box .buy-num .jian-btn {
+  width: 50rpx;
+  height: 100%;
+  border: 1px solid #efefef;
+  border-radius: 50%;
+  margin-right: 5px;
+  font-size: 32rpx;
+}
+
+.goods-info .text-box .buy-num .jian-btn.disabled {
+  background-color: #f5f5f5;
+  border: 1px solid #efefef;
+  color: #979d9f;
+}
+
+.goods-info .text-box .buy-num .jia-btn {
+  width: 50rpx;
+  height: 100%;
+  border: 1px solid #efefef;
+  border-radius: 50%;
+  font-size: 32rpx;
+}
+
+.goods-info .text-box .buy-num .jia-btn.disabled {
+  background-color: #f5f5f9;
+  border-right: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+  border-top: 1rpx solid #eee;
+  color: #ccc;
+}
+
+.goods-info .text-box .buy-num input {
+  width: 50rpx;
+  height: 50rpx;
+  min-height: 50rpx;
+  text-align: center;
+  font-size: 26rpx;
+  border: 1rpx solid #efefef;
+  border-radius: 50%;
+  margin-right: 5px;
+  color: #a78845;
+}
+
+.goods-info .img-box .img {
+  width: 80px;
+  height: 80px;
+  border-radius: 6rpx;
+}
+
+.goods-info .img-box .confirm {
+  display: none;
+}
+
+.goods-info .img-box .active {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.a-goods-conts .delete-btn {
+  width: 120rpx;
+  line-height: 60px;
+  text-align: center;
+  background: #a78845;
+  font-size: 30rpx;
+  color: #fff;
+  writing-mode: tb-rl;
+  letter-spacing: 10px;
+  font-weight: 300;
+  border-top-left-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+}
+
+.jiesuan-box {
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.jiesuan-box .total {
+  color: #c5c9ca;
+  font-size: 32rpx;
+  font-weight: 300;
+}
+
+.jiesuan-box .to-pay-btn {
+  color: #fff;
+  background-color: #a78845;
+  width: 150px;
+  margin: 0 auto;
+  margin-top: 8px;
+  border-radius: 20px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 32rpx;
+  font-weight: 300;
+  text-align: center;
+}
+
+.jiesuan-box .no-select {
+  background-color: #c5c9ca;
+}

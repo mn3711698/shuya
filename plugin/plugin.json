@@ -1,0 +1,10 @@
+{
+  "publicComponents": {
+    "index": "components/index/index",
+    "menu": "components/menu/index",
+    "shop-cart": "components/shop-cart/index",
+    "my": "components/my/index",
+    "goods-details": "components/goods-details/index"
+  },
+  "main": "index.js"
+}

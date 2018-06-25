@@ -1,0 +1,66 @@
+<import src="../../utils/wxParse/wxParse.wxml" />
+<view class="container">
+  <view class="my-info">
+    <open-data class="avatar" type="userAvatarUrl"></open-data>
+    <view class="my-info-name" bindtap="getVip">
+      <open-data type="userNickName"></open-data>
+      <image src="../../image/vip.png" />
+    </view>
+    <view class="my-info-order">
+      <view class="list-icon" bindtap="goorderlist" data-index="0">
+        <view class="{{tabClass[0]}}"></view>
+        <image src="../../image/my-icon-2.png" />
+        <text>未付款</text>
+      </view>
+      <view class="list-icon" bindtap="goorderlist" data-index="1">
+        <view class="{{tabClass[1]}}"></view>
+        <image src="../../image/my-icon-3.png" />
+        <text>待发货</text>
+      </view>
+      <view class="list-icon" bindtap="goorderlist" data-index="2">
+        <view class="{{tabClass[2]}}"></view>
+        <image src="../../image/my-icon-4.png" />
+        <text>待收货</text>
+      </view>
+      <view class="list-icon" bindtap="goorderlist" data-index="3">
+        <view class="{{tabClass[3]}}"></view>
+        <image src="../../image/my-icon-1.png" />
+        <text>待评价</text>
+      </view>
+    </view>
+  </view>
+  <view class="my-item-list">
+    <view class="my-item">
+      <text></text>
+      <navigator url="/pages/fav-list/index" hover-class="none">收藏夹</navigator>
+      <image src="../../image/right-icon.png" />
+    </view>
+    <view class="my-item">
+      <text></text>
+      <navigator url="/pages/mycoupons/index" hover-class="none">优惠券</navigator>
+      <image src="../../image/right-icon.png" />
+    </view>
+    <view class="my-item">
+      <text></text>
+      <navigator url="/pages/select-address/index" hover-class="none">收货地址</navigator>
+      <image src="../../image/right-icon.png" />
+    </view>
+    <view class="my-item">
+      <text></text>
+      <view class="about" bindtap="getAbout" data-id="{{about.id}}">{{about.title}}</view>
+      <image src="../../image/right-icon.png" />
+    </view>
+  </view>
+  <view class="show-pop" hidden="{{aboutShow}}">
+    <view class="show-pop-box">
+      <image class="close" bindtap="close" src="../../image/about-icon.png" />
+      <view class="show-pop-title">
+        <text class="l"></text>{{about.title}}
+        <text class="r"></text>
+      </view>
+      <view class="show-pop-text">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </view>
+    </view>
+  </view>
+</view>

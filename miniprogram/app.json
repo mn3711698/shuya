@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/menu/index",
+    "pages/shop-cart/index",
+    "pages/my/index",
+    "pages/goods-details/index"
+  ],
+  "plugins": {
+    "QingHuanSuYa": {
+      "version": "dev",
+      "provider": "wxceb4c7938400699c"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#c5c9ca",
+    "selectedColor": "#a78845",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/image/tabbar/h-o.png",
+        "selectedIconPath": "/image/tabbar/h-a.png",
+        "text": ""
+      },
+      {
+        "pagePath": "pages/menu/index",
+        "iconPath": "/image/tabbar/m-o.png",
+        "selectedIconPath": "/image/tabbar/m-a.png",
+        "text": ""
+      },
+      {
+        "pagePath": "pages/shop-cart/index",
+        "iconPath": "/image/tabbar/s-o.png",
+        "selectedIconPath": "/image/tabbar/s-a.png",
+        "text": ""
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "/image/tabbar/u-o.png",
+        "selectedIconPath": "/image/tabbar/u-a.png",
+        "text": ""
+      }
+    ]
+  }
+}

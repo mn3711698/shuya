@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="HotName">{{HotName.value}}
+    <text></text>
+  </view>
+  <view class="HotMark">{{HotName.remark}}</view>
+  <view class="HotSwiper" style="margin-top:{{windowHeight/45}}px">
+    <swiper circular="{{circular}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{windowWidth/3.8}}rpx" next-margin="{{windowWidth/3.8}}rpx">
+      <block wx:if="{{detect==0}}" wx:for="{{newcoupons}}" wx:key="{{index}}">
+        <swiper-item>
+          <view class="swiper-box">
+            <image src="{{item.picUrl}}" mode="widthFix" bindtap="getHotTap" data-id="{{item.businessId}}" />
+            <view class="swiper-box-info">
+              <view class="box-info-name">{{item.title}}</view>
+              <view class="box-info-money">
+                <text>Ұ</text>{{item.linkUrl}}</view>
+              <view class="box-coupons-btn" bindtap="getCouponsTap" data-id="{{item.remark}}">立即领取</view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+      <block wx:for-items="{{goods}}" wx:key="{{index}}">
+        <swiper-item>
+          <view class="swiper-box">
+            <navigator url="plugin-private://wxceb4c7938400699c/components/goods-details/index?id={{item.id}}">
+              <image src="{{item.pic}}" mode="widthFix" bindtap="getHotTap" data-id="{{item.id}}" />
+            </navigator>
+            <view class="swiper-box-info">
+              <view class="box-info-name">{{item.name}}</view>
+              <view class="box-info-money">
+                <text>Ұ</text>{{item.minPrice}}</view>
+              <view class="box-info-icon-box">
+                <view class="box-info-icon">
+                  <image src="../../image/Hot-cart.png" bindtap="addShopCar" data-id="{{item.id}}" />
+                </view>
+                <view class="box-info-icon" bindtap="{{favicon[goods[index].id] == 0 ? 'fav':'del'}}" data-id="{{item.id}}">
+                  <image wx:if="{{favicon[goods[index].id] != 1}}" src="../../image/Hot-love.png"></image>
+                  <image wx:if="{{favicon[goods[index].id] == 1}}" src="../../image/Hot-love-o.png"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>
